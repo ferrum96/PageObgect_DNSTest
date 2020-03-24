@@ -31,10 +31,10 @@ public class BasketPage extends BasePage {
         WebElement garantee = Init.getDriver().findElement(By.xpath("//*[@class='list-applied-product-services__item']/span"));
         switch (years){
             case 1:
-                Assert.assertEquals("Продленная гарантия на 12 мес. (+3 380)", garantee.getText());
+                Assert.assertEquals("Продленная гарантия на 12 мес.",true, garantee.getText().contains("12 мес"));
                 break;
             case 2:
-                Assert.assertEquals("Продленная гарантия на 24 мес. (+4 680)", garantee.getText());
+                Assert.assertEquals("Продленная гарантия на 24 мес.",true, garantee.getText().contains("24 мес"));
                 break;
         }
         return this;
@@ -74,10 +74,10 @@ public class BasketPage extends BasePage {
         WebElement garantee = Init.getDriver().findElement(By.xpath("//*[@class='list-applied-product-services__item']/span"));
         Thread.sleep(1000);
         for (int i = 0; i < prices.size() - 1; i++) {
-            if (ItemPage.products.get(i).getHasGarranty() == true && garantee.getText().contains("Продленная гарантия на 12 мес. (+3 380)"))
-                Assert.assertEquals(Float.parseFloat(ItemPage.products.get(i).getPrice().replaceAll(" ", "")),(Float.parseFloat(prices.get(i).getText().replaceAll(" ", ""))) + 3380f ,0.01);
-            else if (ItemPage.products.get(i).getHasGarranty() == true && garantee.getText().contains("Продленная гарантия на 24 мес. (+4 680)"))
-                Assert.assertEquals(Float.parseFloat(ItemPage.products.get(i).getPrice().replaceAll(" ", "")), (Float.parseFloat(prices.get(i).getText().replaceAll(" ", ""))) + 4680f, 0.01);
+            if (ItemPage.products.get(i).getHasGarranty() == true && garantee.getText().contains("Продленная гарантия на 12 мес. (+3 640)"))
+                Assert.assertEquals(Float.parseFloat(ItemPage.products.get(i).getPrice().replaceAll(" ", "")),(Float.parseFloat(prices.get(i).getText().replaceAll(" ", ""))) + 3640f ,0.01);
+            else if (ItemPage.products.get(i).getHasGarranty() == true && garantee.getText().contains("Продленная гарантия на 24 мес. (+5 040)"))
+                Assert.assertEquals(Float.parseFloat(ItemPage.products.get(i).getPrice().replaceAll(" ", "")), (Float.parseFloat(prices.get(i).getText().replaceAll(" ", ""))) + 5040f, 0.01);
             else if (ItemPage.products.get(i).getHasGarranty() == true && garantee.getText().contains("Продленная гарантия на 24 мес. (+14 040)"))
                 Assert.assertEquals(Float.parseFloat(ItemPage.products.get(i).getPrice().replaceAll(" ", "")), (Float.parseFloat(prices.get(i).getText().replaceAll(" ", ""))) + 14040f, 0.01);
             else
